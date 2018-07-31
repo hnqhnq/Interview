@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QuickSort递归排序</title>
+    <script>
+        function QuickSort(arr) {
+            if (arr.length <= 1) {
+                return arr;
+            }
+            var self = arguments.callee;
+            var left = [], right = [], middle = [];
+            var mid = arr[Math.floor(arr.length / 2)];
+
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] < mid) {
+                    left.push(arr[i])
+                } else if (arr[i] > mid) {
+                    right.push(arr[i]);
+                } else {
+                    middle.push(arr[i]);
+                }
+            }
+            return [].concat(self(left), middle, self(right));
+        }
+
+        var arrtest = [1, 7, 2, 9, 4, 8];
+        QuickSort(arrtest);
+        // alert(QuickSort(arrtest));
+        document.write(QuickSort(arrtest))
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
